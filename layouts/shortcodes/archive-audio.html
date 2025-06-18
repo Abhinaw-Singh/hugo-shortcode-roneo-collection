@@ -1,4 +1,5 @@
 {{/*  Source: https://gitlab.com/Roneo/hugo-shortcode-roneo-collection  */}}
+{{/*  OUTDATED: this shortcode is now named "audio-archive", please fix your Markdown files and see this shortcode for an updated version  */}}
 
 {{- $src := .Get 0 -}}
 
@@ -13,7 +14,24 @@
 
 {{ "<!-- Shortcode 'archive-audio.html' -->" | safeHTML }}
 
-<ul class="treeview">
+<style>
+
+  .audio-treeview {
+    list-style: none;
+    padding-bottom: 2em;
+  }
+
+  .audio-treeview li {
+    padding-top: 2em;
+  }
+
+  .audio-treeview li figure {
+  padding-top: 1em;
+  }
+
+</style>
+
+<ul class="audio-treeview">
 {{ range $dataJ.files }}
 
     {{/*  Show Audio files only  */}}
@@ -38,11 +56,6 @@
           {{/*  Add a label depending on metadata  */}}
           {{/*  {{ if in .source "original" }}
             <b>ORIGINAL</b>
-          {{ end }}  */}}
-
-          {{/*  Add a label depending on filetype  */}}
-          {{/*  {{ if in .format "Text PDF" }}
-            <b>PDF</b>
           {{ end }}  */}}
 
         </li>

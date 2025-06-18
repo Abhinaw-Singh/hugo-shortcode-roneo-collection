@@ -2,31 +2,37 @@
 
 
 
-## A shortcode collection for Hugo
+## Enhancing Hugo with a Shortcode collection
 
 
-### Icon Shortcode
+### Use inline SVG icons
 
+- Use 4000+ open source SVG icons with Hugo
+- Easily add your own icons and define custom CSS classes
+
+#### Screenshot
+
+![Inline SVG icons with this shortcode for Hugo](https://gitlab.com/Roneo/hugo-shortcode-roneo-collection/-/raw/main/img/svg-icons.png)  
 
 #### Usage
 
 As a shortcode:
 
     {{< ico moon >}}
-    {{< ico moon solid >}}
 
-With named parameters:
-
-    {{< ico icon="moon" >}}
-    {{< ico icon="moon" theme="solid" >}}
+    {{< ico icon="star" theme="solid" class="red medium" >}}
 
 As a partial:
 
-    {{ partial "ico" "moon" }}
+    {{ partial "ico" "star" }}
 
-### Embed audio file
+See this [release announcement](https://roneo.org/en/hugo-svg-icon-shortcode/) to learn more
 
-**Mission:** easily embed players from local and remote audio files
+----
+
+### Embed audio files
+
+An elegant way to insert an audio player and share local and remote audio files.
 
 Usage:
 
@@ -53,18 +59,27 @@ Named parameters can be used too:
 {{< audio src="/audiofilename.mp3" caption="A custom comment" class="foo" preload="none" >}}
 ```
 
-This shortcode is based on [Plyr.io](https://plyr.io/), see [the documentation](https://github.com/sampotts/plyr#features) to learn about the installation and features
+This shortcode is based on [Plyr.io](https://plyr.io/), see [this tutorial](https://roneo.org/en/hugo/plyr) to set up with Hugo
 
+----
 
-### Embed multiple audio files from Archive.org
+### Customized notices and warning
 
 Usage:
 
-    {{< archive-audio "https://archive.org/details/heyamoli" >}}
+```
+{{< box info >}}
+  Incididunt labore eiusmod culpa eu nostrud tempor laborum consequat eiusmod excepteur.
+{{< /box >}}
+```
 
-Demo: See https://phoni.es/dev/v4/
+Screenshot:
 
+![Include custom messages in your posts with a Shortcode](https://roneo.org/illustrations/hugo-notices-shortcode-show-warning-message.en-img/20220914110145.jpg)
 
+See the [demo and documentation](https://roneo.org/en/hugo-warning-messages-shortcode/) for details.
+
+----
 
 ### Embed video file
 
@@ -88,23 +103,50 @@ Named parameters can be used too:
 {{< video src="/test-file.mp4" caption="A custom comment"  poster="preview-image.jpg" class="foo" preload="none" >}}
 ```
 
-### Customized text blocks
+This shortcode is based on [Plyr.io](https://plyr.io/), see [the documentation](https://github.com/sampotts/plyr#features) to learn about the features and [this tutorial](https://roneo.org/en/hugo/plyr) to set up with Hugo
 
-Usage:
+----
+
+### Show Creative Commons icons
+
+Creative Commons public licenses provide a standard set of terms and conditions that creators and other rights holders may use to share original works.
+
+Authors can give selected rights to others, with optional criterias.
+
+This Hugo Shortcode can be used to display icons depending on selected criterias.
 
 ```
-{{< box info >}}
-  Incididunt labore eiusmod culpa eu nostrud tempor laborum consequat eiusmod excepteur.
-{{< /box >}}
+{{< cc "by" >}}  
+{{< cc "by nc" >}}
+{{< cc "by-nc-sa" >}}
 ```
 
-Screenshot:
+Will show
 
-![Include custom messages in your posts with a Shortcode](https://roneo.org/illustrations/hugo-notices-shortcode-show-warning-message.en-img/20220914110145.jpg)
+![Creative commons shortcode for Hugo](https://roneo.org/illustrations/hugo-creative-commons-shortcode.png)
 
-See the [demo and documentation](https://roneo.org/en/hugo-warning-messages-shortcode/) for details.
+The linked URL is adapted to point to the right Creative Commons license.
 
+----
 
+### Include a Markdown file into another
+
+The same content can be relevant in several places.  
+Here is how to include the same Markdown file in multiple pages.
+
+    {{% include "included-file-name.md" %}}
+
+Features:
+
+- Markdown content and Shortcodes are properly included and rendered
+- The Front Matter of included file is hidden
+- The filename is enough (no fullpath is required)
+
+Note that you may need to restart Hugo Server to see the changes in included files applied.
+
+See [these notes](https://roneo.org/en/hugo-include-another-file-with-a-shortcode/) for details
+
+<!-- 
 ### List Github stars
 
 **Mission**: Display a list of the last starred repositories on Github on your website. This list is automatically updated every time the website is rebuilt.
@@ -117,21 +159,23 @@ See the [demo and documentation](https://roneo.org/en/hugo-warning-messages-shor
 See [the demo](https://demo.roneo.app/hugo-fetch-github-api-shortcode/) for live examples and [the documentation](https://roneo.org/en/hugo-fetch-remote-data-github-api-shortcode/) for guidance.
 
 
+### Embed multiple audio files from Archive.org
+
+Usage:
+
+    {{< audio-archive "https://archive.org/details/heyamoli" >}}
+
+Demo: See https://phoni.es/dev/v4/
+
+ -->
+
+----
+
 ## Installation
 
-Install the collection as a Git submodule:
 
-```bash
-git submodule add https://gitlab.com/Roneo/hugo-shortcode-roneo-collection.git themes/hugo-shortcode-roneo-collection
-```
+See the [dedicated documentation](https://roneo.org/en/hugo-install-shortcode-collection/).
 
-Then edit your [configuration file](https://gohugo.io/getting-started/configuration/) this way:
-
-```toml
-theme = ["hugo-shortcode-roneo-collection", "YourCurrentTheme"]
-
-enableInlineShortcodes = true
-```
 
 ## Found a problem?
 
@@ -149,3 +193,14 @@ Please open an issue on [Github](https://github.com/RoneoOrg/hugo-shortcode-rone
 
 - [Hugo documentation about Theme Components](https://gohugo.io/hugo-modules/theme-components/)
 - Hugo documentation about [Shortcodes](https://gohugo.io/content-management/shortcodes/)
+
+## Related projects
+
+- [Awesome Hugo Shortcodes For Your Websites](https://atharvashah.netlify.app/posts/tech/hugo-shortcodes/)
+- [Darth's Hugo shortcodes](https://github.com/Darthagnon/darths-hugo-shortcodes)
+- [Hugo-leaflet: insert OSM Maps, Markers and Tracks](https://github.com/altrdev/hugo-leaflet)
+- [Hugo Attachment shortcode](https://oostens.me/posts/hugo-attachment-shortcode/)
+- [Hugo Tabs shortcode](https://oostens.me/posts/hugo-tabs-shortcode/)
+- [Hugo-cloak-email: hide email adresses from spammers](https://github.com/martignoni/hugo-cloak-email)
+- [Hugo Timeline Shortcode](https://metalblueberry.github.io/post/howto/2021-02-28_hugo_timeline_shortcode/)
+- [Add Plots With Hugo Shortcodes - Plotly](https://metalblueberry.github.io/post/howto/2019-11-23_add_plots_with_hugo_shortcodes/)
